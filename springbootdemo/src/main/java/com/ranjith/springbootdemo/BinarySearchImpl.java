@@ -1,10 +1,15 @@
 package com.ranjith.springbootdemo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class BinarySearchImpl {
+	@Autowired
 	SortAlgorithm sortAlgorithm;
 	
-	// ctrl + shift + s (short cut)
-	// This is loose coupling, we pass the dependency to the binary search in constructor
+	// @Autowired --> if used here, it is constructor injection, you can also do it in setter method, its called setter injection
+	// No need to set dependencies with spring like this anymore. (above autowiring alone works)
 	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
 		super();
 		this.sortAlgorithm = sortAlgorithm;
@@ -13,15 +18,6 @@ public class BinarySearchImpl {
 	public int binarySearch(int[] numbers, int number) {
 		//dummy implementation
 		// 1. Sort
-		
-		/*
-		 	This tight coupling, betwwen Binary search and bubble sort
-			
-			BubbleSortAlgorithm bsa = new BubbleSortAlgorithm();
-			int[] sortednumbers = bsa.sort(numbers); 
-		 */		
-		
-		// good programming 
 		int[] sortedNumbers = sortAlgorithm.sort(numbers);
 		System.out.println("Algorithm used is :" + sortAlgorithm);
 		

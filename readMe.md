@@ -1,4 +1,4 @@
-#SPRING BOOT MASTERCLASS
+# SPRING BOOT MASTERCLASS
 __`Spring is Dependency Injection Framework`__
 
 #### Dependency
@@ -20,8 +20,11 @@ __`Spring is Dependency Injection Framework`__
 - In the case of Spring framework the typical IOC container is the application context.
 
 #### Spring concepts
+
 <img src="./Images/springConcepts.png" height="350" width="480">
+
 #### Loose Coupling
+
 - `start.spring.io` to start a spring project, it will provide all the required dependencies
 - Here we have implemented loose coupling by passing the algorithm to use for sorting in the constructor.
 
@@ -115,3 +118,36 @@ public class SpringbootdemoApplication {
 	}
 }
 ```
+
+#### @AutoWiring, @Component
+
+- In the above example we are creating binarySearch object, we are creating bubbleSort object. Do we really need to do that ? Wouldn't it be great if our spring creates those for us ?
+- Yes, We can use beans to create these objects with the help of spring framework
+- In the above example we have one bean (binary Search) and one dependency (bubbleSort)
+- If you look in the maven dependencies, spring beans, spring context, spring core are all there (indicates spring is already available for us). Things that we need to tell the spring framework are:
+	- What are beans? (`@Component` to indicate beans, here BubbleSort, QuickSort)
+	- What are the dependencies of the beans? (`@AutoWired` to indicate dependency, here sortAlgorithm in BinarySearchImpl)
+	- Where to search for beans? (`@ComponentScan()` is used, or we can use `@SpringBootApplication` above main class, which indicates it searches current package and subpackages of it)
+
+- SpringApplication.run(...) in main will return the Application context. We can use that application context to get the required beans. `applicationContext.getBean(BinarySearchImpl.class)`
+
+- Now spring is managing beans, managing dependencies for those beans.
+
+- To understand how these are managed by spring you can debug by `logging.level.org.springframework = debug` in `application.properties` file, which will produce lot of debug statements when you run
+- You can search `BinarySearchImpl` and track whats being done.
+
+- Process: First componentScan to find where it should search i.e here entire package --> find @Component tagged classes --> creates beans for those classes (if no dependencies) --> (If dependencies) Autowiring via constructor to bean --> this ends creation of beans(with dependencies).
+
+- check issue 1, in that case, we can use `@Primary` for either BubbleSort/QuickSort. (This is dynamic auto wiring )
+
+- __`Contructor Injection / Setter Injection`__ - when you autowire the dependencies in the component you can do it in either way.
+- Even though there is no setter, you can just use `@AutoWired SortAlgorithm sortAlgorithm;` and this is enough, kind of works like setter. so need to implement setter also.
+
+#### Issues Faced:
+
+- `Issue 1` : Parameter 0 of constructor in com.ranjith.springbootdemo.BinarySearchImpl required a single bean, but 2 were found:
+- `Context`: When I used @Component for both bubble and quick sort. (@Autowired for sortAlgorithm variable in BinarySearchImpl)
+- `Action`: Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed.
+- __`Spring trouble shooting guide`__ https://github.com/in28minutes/in28minutes-initiatives/tree/master/The-in28Minutes-TroubleshootingGuide-And-FAQ
+
+

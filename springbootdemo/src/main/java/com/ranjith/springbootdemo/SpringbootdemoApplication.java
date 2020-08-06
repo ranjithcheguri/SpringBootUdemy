@@ -2,15 +2,18 @@ package com.ranjith.springbootdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class SpringbootdemoApplication {
 
 	public static void main(String[] args) {
-		BinarySearchImpl bs = new BinarySearchImpl(new BubbleSortAlgorithm());
+		
+		ApplicationContext applicationContext = SpringApplication.run(SpringbootdemoApplication.class, args);
+		BinarySearchImpl bs = applicationContext.getBean(BinarySearchImpl.class);
+		
 		int result = bs.binarySearch(new int[] {1, 2, 3, 4}, 3);
 		System.out.println(result);
-		// ouput = Algorithm used is :com.ranjith.springbootdemo.BubbleSortAlgorithm@3764951d		
-		SpringApplication.run(SpringbootdemoApplication.class, args);
+		
 	}
 }

@@ -150,4 +150,25 @@ public class SpringbootdemoApplication {
 - `Action`: Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed.
 - __`Spring trouble shooting guide`__ https://github.com/in28minutes/in28minutes-initiatives/tree/master/The-in28Minutes-TroubleshootingGuide-And-FAQ
 
+>SpringbootdemoApplication.java (after autowiring)
+```java
+package com.ranjith.springbootdemo;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringbootdemoApplication {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext applicationContext = SpringApplication.run(SpringbootdemoApplication.class, args);
+		BinarySearchImpl bs = applicationContext.getBean(BinarySearchImpl.class);
+		
+		int result = bs.binarySearch(new int[] {1, 2, 3, 4}, 3);
+		System.out.println(result);
+		
+	}
+}
+```

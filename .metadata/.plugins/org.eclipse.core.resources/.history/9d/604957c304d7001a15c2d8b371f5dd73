@@ -1,0 +1,9 @@
+package com.ranjith.springbootdemo;
+
+public class BinarySearchImpl {
+	public int binarySearch(int[] numbers, int number) {
+		# dummy implementation
+		int index = 0;
+		return index;
+	}
+}

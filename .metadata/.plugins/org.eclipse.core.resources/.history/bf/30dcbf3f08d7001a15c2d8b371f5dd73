@@ -1,0 +1,17 @@
+package com.ranjith.springbootdemo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class SpringbootdemoApplication {
+
+	public static void main(String[] args) {
+		BinarySearchImpl bs = new BinarySearchImpl(new BubbleSortAlgorithm());
+		int result = bs.binarySearch(new int[] {1, 2, 3, 4}, 3);
+		System.out.println(result);
+		
+		SpringApplication.run(SpringbootdemoApplication.class, args);
+	}
+
+}

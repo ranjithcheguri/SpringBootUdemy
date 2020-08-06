@@ -1,0 +1,8 @@
+package com.ranjith.springbootdemo;
+
+public class QucikSortAlgorithm {
+	public int[] sort(int[] numbers){
+		// dummy impl
+		return numbers;
+	}
+}

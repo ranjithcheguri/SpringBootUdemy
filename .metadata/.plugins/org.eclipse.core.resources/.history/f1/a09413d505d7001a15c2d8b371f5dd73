@@ -1,0 +1,14 @@
+package com.ranjith.springbootdemo;
+
+public class BinarySearchImpl {
+	public int binarySearch(int[] numbers, int number) {
+		//dummy implementation
+		// 1. Sort
+		BubbleSortAlgorithm bsa = new BubbleSortAlgorithm();
+		sortednumbers = bsa.sort(numbers);
+		// 2. Impl Binary Search
+		// 3. Return index
+		int index = 0;
+		return index;
+	}
+}

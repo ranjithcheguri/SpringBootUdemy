@@ -172,3 +172,6 @@ public class SpringbootdemoApplication {
 	}
 }
 ```
+#### Spring Modules
+
+<img src="./Images/springModules.png" height="450" width="800">

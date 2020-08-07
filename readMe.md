@@ -168,7 +168,6 @@ public class SpringbootdemoApplication {
 		
 		int result = bs.binarySearch(new int[] {1, 2, 3, 4}, 3);
 		System.out.println(result);
-		
 	}
 }
 ```
@@ -182,4 +181,14 @@ public class SpringbootdemoApplication {
 
 - by name is --> instead of creating instance like this `SortAlgorithm sortAlgorithm`, we can directly create `SortAlgorithm bubbleSortAlgorithm` (it directly invokes bubbleSort, we need not initialize that variable also)
 - What if I use `SortAlgorithm bubbleSortAlgorithm` and `@Primary` tag for QucikSortAlgorithm ? Quicksort algorithm will be executed __`priority of autowiring by @Primary > autowiring by name`__
+
+
+#### @Qualifier
+
+- Other than autowiring by name and primary, we can also define qualifier like `@Qualifier("quick")` for QuickSortAlgorithm and `@Qualifier("bubble")` for BubbleSortAlgorithm and we can autowire in BinarySearchImpl using the same `@Qualifier("bubble")`.
+
+- Using this qualifiers, if we need to use different sorting techniques at different places, we can just use the Qualifier tag for that SortAlgorithm Interface instantiation i.e `@Qualifier("quick) SortAlgorithm sortAlgorithm"`
+
+- using just `Qualifier` without any tag name also worked, but we have that for only one component, (just like how primary works)
+
 

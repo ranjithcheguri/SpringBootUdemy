@@ -1,4 +1,4 @@
-package com.ranjith.springbootdemo;
+package com.ranjith.springbootdemo.basicDemo;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;

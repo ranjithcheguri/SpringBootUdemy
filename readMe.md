@@ -191,4 +191,33 @@ public class SpringbootdemoApplication {
 
 - using just `Qualifier` without any tag name also worked, but we have that for only one component, (just like how primary works)
 
+### Bean Scope
+- __`Singleton (Default scope):`__
+	- In the above example, if you `System.out.println(binarySearch)` BinarySearch class object, we would get the same address, no matter how many time you create objects like bs, bs1, bs2...etc.
+	- That indicates that only one object is created and spring reuses the same obj, everytime when you try to create objects for that class, that is called singleton scope where there is __only one instance per Spring Context__.
+
+- __`Prototype:`__
+	- New bean whenever requested
+
+- __`Request:`__
+	- One bean per one HTTP Request
+
+- __`Session:`__
+	- One bean per one HTTP Session
+
+- Usage: (ex: prototype scope) Tag the BinarySearchImpl class with __`@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)`__
+
+#### Complex Scope Scenarios - Prototype + Singleton
+
+- Consider, we have a person class which uses JDBCConnectino for some for some operations, (dependency relation: Person -->( dependent on) JDBC ).
+
+- In the above case, I need to create Person class only once, but I want different JDBC Connection everytime.
+
+- In this we can use Singleton scope for Person, Prototype scope for JDBC but it wont work.( only one instance will be created for both Person and JDBC eventhough you have mentioned prototype scope, that is because Person class is called only once and it inturn calls JDBC only once)
+
+- One solution is to make Person class as prototype but you are unnecessarily creating objects everytime.
+
+- To solve the above problem, we need to use something called as proxy i.e __`@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = scopedProxyMode.TARGET_CLASS`__
+
+- This will ensure that in all the classes where JDBC is used as dependency, for every invocation it will create new object as the scope is prototype.
 

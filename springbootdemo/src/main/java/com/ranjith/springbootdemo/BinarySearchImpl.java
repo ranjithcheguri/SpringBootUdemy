@@ -5,25 +5,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BinarySearchImpl {
-	@Autowired
-	SortAlgorithm sortAlgorithm;
-	
-	// @Autowired --> if used here, it is constructor injection, you can also do it in setter method, its called setter injection
-	// No need to set dependencies with spring like this anymore. (above autowiring alone works)
-	public BinarySearchImpl(SortAlgorithm sortAlgorithm) {
-		super();
-		this.sortAlgorithm = sortAlgorithm;
-	}
-
+	@Autowired							// Autowiring by Name
+	SortAlgorithm bubbleSortAlgorithm;	// name directly used, without even creating that variable, spring will take care of it.
 	public int binarySearch(int[] numbers, int number) {
 		//dummy implementation
 		// 1. Sort
-		int[] sortedNumbers = sortAlgorithm.sort(numbers);
-		System.out.println("Algorithm used is :" + sortAlgorithm);
-		
+		int[] sortedNumbers = bubbleSortAlgorithm.sort(numbers);
+		System.out.println("Algorithm used is :" + bubbleSortAlgorithm);
 		// 2. Impl Binary Search
-		// 3. Return index
 		int index = 0;
+		// 3. Return index
 		return index;
 	}
 }

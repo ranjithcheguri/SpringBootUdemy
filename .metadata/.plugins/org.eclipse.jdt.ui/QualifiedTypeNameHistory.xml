@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.ranjith.springbootdemo.BinarySearchImpl"/>
     <fullyQualifiedTypeName name="com.ranjith.springbootdemo.SortAlgorithm"/>
     <fullyQualifiedTypeName name="com.ranjith.springbootdemo.BubbleSortAlgorithm"/>
+    <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+    <fullyQualifiedTypeName name="com.ranjith.springbootdemo.BinarySearchImpl"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Primary"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>

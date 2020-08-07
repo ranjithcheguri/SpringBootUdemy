@@ -175,3 +175,11 @@ public class SpringbootdemoApplication {
 #### Spring Modules
 
 <img src="./Images/springModules.png" height="450" width="800">
+
+#### @AutoWiring by name and by @Primary
+
+- @Primary is used for one of the component either bubbleSort or Quick sort. ( just like how we used previously )
+
+- by name is --> instead of creating instance like this `SortAlgorithm sortAlgorithm`, we can directly create `SortAlgorithm bubbleSortAlgorithm` (it directly invokes bubbleSort, we need not initialize that variable also)
+- What if I use `SortAlgorithm bubbleSortAlgorithm` and `@Primary` tag for QucikSortAlgorithm ? Quicksort algorithm will be executed __`priority of autowiring by @Primary > autowiring by name`__
+

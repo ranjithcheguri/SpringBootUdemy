@@ -14,7 +14,6 @@ public class SpringbootApplicationScopeDemo {
 		PersonDao personDao1 = applicationContext.getBean(PersonDao.class);
 		PersonDao personDao2 = applicationContext.getBean(PersonDao.class);
 		
-		
 		System.out.println(personDao1);
 		System.out.println(personDao2);
 		System.out.println(personDao1.getJdbcConnection());

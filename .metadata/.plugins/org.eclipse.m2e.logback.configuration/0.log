@@ -1478,3 +1478,9 @@
 2020-08-06 19:47:38,442 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2020-08-06 19:47:38,444 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-08-06 19:47:38,444 [Worker-72: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ranjith/Documents/WorkSpace/SpringBootUdemy/springbootdemo/src/test/resources
+2020-08-08 18:59:15,802 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-08-08 19:01:03,729 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-08-08 19:01:03,732 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-08-08 19:01:03,743 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-08-08 19:01:03,746 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-08-08 19:01:03,746 [Worker-1: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ranjith/Documents/WorkSpace/SpringBootUdemy/springbootdemo/src/test/resources

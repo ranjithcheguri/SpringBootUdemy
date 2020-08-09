@@ -221,3 +221,6 @@ public class SpringbootdemoApplication {
 
 - This will ensure that in all the classes where JDBC is used as dependency, for every invocation it will create new object as the scope is prototype.
 
+#### Gang of Four Singleton vs Spring Singleton
+- Singleton in GOF will contain only one instance of that specific class in JVM.
+- In Spring singleton, one instance of that specific class for one Spring Application context. If you 5 Application contexts running on JVM, you'll have 5 singleton instances of that specific class.

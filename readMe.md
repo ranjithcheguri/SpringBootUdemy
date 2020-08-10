@@ -234,3 +234,14 @@ public class SpringbootdemoApplication {
 
 - Lets say we need to check if all our required beans for BinarySearchImpl are populated before executing the code, we can do that by method `@PostContruct` which is called usally as soon as dependencies are available.
 - similarly `@PreDestory`, called just before bean is removed from the context.
+
+#### Container and Dependency Injection (CDI) - @Named, @Inject
+
+- CDI is an interface which helps us how to do dependency injection.
+- Java EE Dependency Injection Standard
+- Spring supports most annotations
+	- __`@Inject`__ (`@Autowired`)
+	- __`@Named`__ (`@Component` & `@Qualifier`)
+	- __`@Singleton`__ (Defines a scope of singleton)
+
+- Dependency `javax.inject` in pox.xml to be added in order to work. After including it you can see javax.inject jar files in Maven Dependencies.

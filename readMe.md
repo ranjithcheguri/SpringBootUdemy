@@ -304,6 +304,8 @@ public class SpringbootdemoApplication {
 
 #### @Component vs @Service vs @Repository vs @Controller
 
+<img src = "Images/componentAnnotations.png" width = "500" height = "200" />
+
 - Maven Dependencies -> org.springframework -> sterotypes -> using can see `Component.class`, `Service.class`, `Repository.class` etc.
 
 - There is no change in terms of functionality as such compared to @Component. So if I change @Component to @Service or @Respository or @Controller and run the basic application right now, it would run as usual perfectly fine. So, now the question that you might be asking is if there is no change in functionality, why should I use a specific annotation, why should I call this a service, why should I call the other one @Respository?
@@ -315,3 +317,15 @@ public class SpringbootdemoApplication {
 - let's say you would want to log everything that's coming into your business layer. In that kind of scenario, you'd be able to identify everything that has an @Service annotation. You can use AOP to identify that.
 
 - DAO (database operations) -> use `@Repository` , BinarySearchImpl (business logic) -> use `@Service`
+
+#### External Properties
+- In your application, you might be talking to a database. So, the URL to the database or the data source connection to the database might be different in different environments. Also, the external services that you talk to might be different in different environments. The service you could be talking to in Dev would be different from the service you would be talking to in Production. These kinds of values are good to be externalized into property files.
+
+- Create `app.properties` in resources and define all your properties in that file
+- to read a value from properties file you need to use  value tag like `@Value("${external.service.url}")`
+
+- to load properties, you need to include in the main file with annotation `@PropertySource("classpath:app.properties")`
+
+- one observation, whenever we are referencing the resources folder, (xml before, app.propertities now) we are using classpath.
+
+- so whenever we want to use dev environemnt instead of production environment, we can just replace the app.properties file with dev version of app.properties.

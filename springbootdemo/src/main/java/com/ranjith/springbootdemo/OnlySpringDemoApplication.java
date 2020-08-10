@@ -13,10 +13,11 @@ public class OnlySpringDemoApplication {
 
 	public static void main(String[] args) {
 		// spring way of creating application context, without spring boot
-		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(OnlySpringDemoApplication.class);
+		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(OnlySpringDemoApplication.class);
 		BinarySearchImpl bs1 = applicationContext.getBean(BinarySearchImpl.class);
 		System.out.println(bs1);
 		int result = bs1.binarySearch(new int[] {1, 2, 3, 4}, 3);
 		System.out.println(result);
+		applicationContext.close();
 	}
 }

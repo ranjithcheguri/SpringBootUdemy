@@ -252,3 +252,45 @@ public class SpringbootdemoApplication {
 - Application context in spring is defined by using annotation __`@Configuration`__ instead of `@SpringBootApplication` and __`ApplicationContext applicationContext = new AnnotationConfigApplicationContext(OnlySpringDemoApplication.class);`__ instead of `ApplicationContext applicationContext = SpringApplication.run(SpringbootdemoApplication.class, args);`
 - Spring boot handles the component scan in the same package, but we need to manuage configure in spring by __`@ComponentScan`__
 - `@ComponentScan` will do scan in the current package, or we can also configure like `@ComponentScan("packagename")`
+- close the application context with `applicationContext.Close()` or using try method (after java 7, which offers something called as closable)
+
+#### Defining Spring Application Context using XML
+
+- Is there any other way to define beans without using annotations ? Yes, configuring beans in xml files.
+
+- get the basic xml configuration metadata from offical spring.io website
+
+- create `applicationContext.xml` in resources folder and define beans in there with id and class.
+
+- you can get the class name by copying the `qualifying name` in the java file.
+
+- to autowire in xml file, you need to use property tag with reference to the dependent class bean like `<property name="xmlJdbcConnection" ref="xmlJdbcConnection"/>`
+
+- And to create application context for this xml based configuration you need to use __``__ with xml file name.
+
+- __Issues__:  IOException parsing XML document from class path resource [applicationContext.xml];
+- __solution__ : possible file name given wrong (or) generally xml files are located in src/main/resources make sure xml file is located in that folder.
+
+- to see what all beans are loaded into the application context we can use method __`applicationContext.getBeanDefinitionNames()`__
+
+- to print all the beans make sure to type cast it to Object when logger is used `(Object)applicationContext.getBeanDefinitionNames()` or when syso is used `Arrays.asList(applicationContext.getBeanDefinitionNames())` ELSE only some random location will be printed.
+
+- __`ComponentScan`__ how do we do component scan in this case i.e using XML configuration, we can define it in applicationContext.xml file.
+- In parent `<beans>` change include context i.e
+	```xml
+	<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context = "http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package = "com.ranjith.springbootdemo"/>
+	```
+- __Issue__: https://stackoverflow.com/questions/7131479/the-prefix-context-for-element-contextcomponent-scan-is-not-bound
+
+- When component scan is included you can see that the number of beans printed are way more, (you know why)
+
+- you can remove beans from the xml file and use annotations, it would work the same way.

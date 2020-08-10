@@ -1,5 +1,8 @@
 package com.ranjith.springbootdemo.basicDemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -21,5 +24,15 @@ public class BinarySearchImpl {
 		int index = 0;
 		// 3. Return index
 		return index;
+	}
+
+	@PostConstruct
+	public void PostConstruct(){
+		System.out.println("post construct called");
+	}
+
+	@PreDestroy
+	public void PreDestroy(){
+		System.out.println("pre destroy called");
 	}
 }

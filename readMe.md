@@ -229,3 +229,8 @@ public class SpringbootdemoApplication {
 - When you are in springbootdemo package and you have another package above it (say componentScan), then if we define the application context in springbootdemo package and run the program in componentScan package, it will throw error.
 - Reason being the tag `@SpringApplicationContext` in the main program file, that tag makes the spring search for files only in the current packages and its children not above. 
 - So we have to manually let the spring know to scan the packages by annotation `@ComponentScan("com.ranjith.componentscan")` (this is used along with @SpringApplicationContext)
+
+#### Lifecycle of a Bean - @PostConstruct and @PreDestroy
+
+- Lets say we need to check if all our required beans for BinarySearchImpl are populated before executing the code, we can do that by method `@PostContruct` which is called usally as soon as dependencies are available.
+- similarly `@PreDestory`, called just before bean is removed from the context.

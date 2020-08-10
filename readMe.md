@@ -224,3 +224,8 @@ public class SpringbootdemoApplication {
 #### Gang of Four Singleton vs Spring Singleton
 - Singleton in GOF will contain only one instance of that specific class in JVM.
 - In Spring singleton, one instance of that specific class for one Spring Application context. If you 5 Application contexts running on JVM, you'll have 5 singleton instances of that specific class.
+
+#### @ComponentScan
+- When you are in springbootdemo package and you have another package above it (say componentScan), then if we define the application context in springbootdemo package and run the program in componentScan package, it will throw error.
+- Reason being the tag `@SpringApplicationContext` in the main program file, that tag makes the spring search for files only in the current packages and its children not above. 
+- So we have to manually let the spring know to scan the packages by annotation `@ComponentScan("com.ranjith.componentscan")` (this is used along with @SpringApplicationContext)

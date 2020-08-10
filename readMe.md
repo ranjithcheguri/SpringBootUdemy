@@ -301,3 +301,17 @@ public class SpringbootdemoApplication {
 - Bean Factory - basic management for beans and wiring of dependencies (thats all it does)
 - Application context - it does all all bean factory does and inaddition it has features like `Spring AOP features`, `l18n capablilities` (internationalization like language support, currency support for different locations worldwide) and `WebApplicationContext` (for web applications) etc.
 - Spring recommends Application context always, except in scenarios where memory is limited (say, incase of IOT devices)
+
+#### @Component vs @Service vs @Repository vs @Controller
+
+- Maven Dependencies -> org.springframework -> sterotypes -> using can see `Component.class`, `Service.class`, `Repository.class` etc.
+
+- There is no change in terms of functionality as such compared to @Component. So if I change @Component to @Service or @Respository or @Controller and run the basic application right now, it would run as usual perfectly fine. So, now the question that you might be asking is if there is no change in functionality, why should I use a specific annotation, why should I call this a service, why should I call the other one @Respository?
+
+- So these annotations, @Service, @Repository, @Controller allows you to classify your components into different categories and you can apply different logic
+
+- For example, Spring provides a default exception translation facility, if you use @Repository. There are a lot of JDBC exceptions and Spring classifies them and translates them and that feature is provided only if you are using an @Repository annotation.
+
+- let's say you would want to log everything that's coming into your business layer. In that kind of scenario, you'd be able to identify everything that has an @Service annotation. You can use AOP to identify that.
+
+- DAO (database operations) -> use `@Repository` , BinarySearchImpl (business logic) -> use `@Service`

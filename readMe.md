@@ -245,3 +245,10 @@ public class SpringbootdemoApplication {
 	- __`@Singleton`__ (Defines a scope of singleton)
 
 - Dependency `javax.inject` in pox.xml to be added in order to work. After including it you can see javax.inject jar files in Maven Dependencies.
+
+#### Removing Spring Boot in Basic Application
+- If we want to spring boot and just work on spring, we can do that by removing dependency `spring-boot-starter` and adding `spring-core` and `spring-context` (to make use of application context)
+
+- Application context in spring is defined by using annotation __`@Configuration`__ instead of `@SpringBootApplication` and __`ApplicationContext applicationContext = new AnnotationConfigApplicationContext(OnlySpringDemoApplication.class);`__ instead of `ApplicationContext applicationContext = SpringApplication.run(SpringbootdemoApplication.class, args);`
+- Spring boot handles the component scan in the same package, but we need to manuage configure in spring by __`@ComponentScan`__
+- `@ComponentScan` will do scan in the current package, or we can also configure like `@ComponentScan("packagename")`

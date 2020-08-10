@@ -294,3 +294,10 @@ public class SpringbootdemoApplication {
 - When component scan is included you can see that the number of beans printed are way more, (you know why)
 
 - you can remove beans from the xml file and use annotations, it would work the same way.
+
+#### IOC Container vs Application Context vs Bean Factory
+
+- IOC (you know and how spring achieved it using autowiring and all)
+- Bean Factory - basic management for beans and wiring of dependencies (thats all it does)
+- Application context - it does all all bean factory does and inaddition it has features like `Spring AOP features`, `l18n capablilities` (internationalization like language support, currency support for different locations worldwide) and `WebApplicationContext` (for web applications) etc.
+- Spring recommends Application context always, except in scenarios where memory is limited (say, incase of IOT devices)
